@@ -2,22 +2,22 @@ cask "noteminder" do
   version "1.1.4"
   sha256 :no_check
 
-  url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}-arm64.dmg",
-      verified: "github.com/hypn05/NoteMinder/"
+  # Determine URL based on architecture
+  if Hardware::CPU.intel?
+    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}.dmg",
+        verified: "github.com/hypn05/NoteMinder/"
+  else
+    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}-arm64.dmg",
+        verified: "github.com/hypn05/NoteMinder/"
+  end
+
   name "NoteMinder"
   desc "Desktop note-taking application with collapsible sidebar"
   homepage "https://github.com/hypn05/NoteMinder"
 
   livecheck do
-    url :url
+    url :homepage
     strategy :github_latest
-  end
-
-  # Support both Intel and Apple Silicon
-  if Hardware::CPU.intel?
-    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}.dmg"
-  else
-    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}-arm64.dmg"
   end
 
   app "NoteMinder.app"
