@@ -2,14 +2,8 @@ cask "noteminder" do
   version "1.1.4"
   sha256 :no_check
 
-  # Determine URL based on architecture
-  if Hardware::CPU.intel?
-    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}.dmg",
-        verified: "github.com/hypn05/NoteMinder/"
-  else
-    url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}-arm64.dmg",
-        verified: "github.com/hypn05/NoteMinder/"
-  end
+  url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}#{Hardware::CPU.intel? ? "" : "-arm64"}.dmg",
+      verified: "github.com/hypn05/NoteMinder/"
 
   name "NoteMinder"
   desc "Desktop note-taking application with collapsible sidebar"
