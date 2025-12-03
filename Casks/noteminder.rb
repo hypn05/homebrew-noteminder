@@ -16,6 +16,12 @@ cask "noteminder" do
 
   app "NoteMinder.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/NoteMinder.app"],
+                   sudo: true
+  end
+
   zap trash: [
     "~/Library/Application Support/noteminder",
     "~/Library/Preferences/com.noteminder.app.plist",
