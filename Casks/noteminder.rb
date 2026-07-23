@@ -1,5 +1,5 @@
 cask "noteminder" do
-  version "1.1.6"
+  version "1.1.7"
   sha256 :no_check
 
   url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}#{Hardware::CPU.intel? ? "" : "-arm64"}.dmg",
