@@ -1,12 +1,12 @@
 cask "noteminder" do
-  version "1.1.8"
+  version "1.2.0"
   sha256 :no_check
 
   url "https://github.com/hypn05/NoteMinder/releases/download/v#{version}/NoteMinder-#{version}#{Hardware::CPU.intel? ? "" : "-arm64"}.dmg",
       verified: "github.com/hypn05/NoteMinder/"
 
   name "NoteMinder"
-  desc "Desktop note-taking application with collapsible sidebar"
+  desc "Floating, keyboard-first notes app"
   homepage "https://github.com/hypn05/NoteMinder"
 
   livecheck do
